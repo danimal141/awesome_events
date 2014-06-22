@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
   get '/auth/:provider/callback', controller: :sessions, action: :create
+  get '/logout', controller: :sessions, action: :destroy, as: :logout
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

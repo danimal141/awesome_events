@@ -9,4 +9,8 @@ header.navbar.navbar-default role='navigation'
       = link_to 'AwesomeEvents', root_path, class: 'navbar-brand'
     div#bs-example-navbar-collapse-1.collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right
-       li = link_to 'twitterでログイン', '/auth/twitter'
+        - if logged_in?
+          li = link_to 'ログアウト', logout_path
+        - else
+          li = link_to 'twitterでログイン', '/auth/twitter'
+
