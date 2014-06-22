@@ -1,4 +1,12 @@
 header.navbar.navbar-default role='navigation'
   div.container
     div.navbar-header
+      button.navbar-toggle type='button' data-toggle='collapse' data-target='#bs-example-navbar-collapse-1'
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
       = link_to 'AwesomeEvents', root_path, class: 'navbar-brand'
+    div#bs-example-navbar-collapse-1.collapse.navbar-collapse
+      ul.nav.navbar-nav.navbar-right
+       li = link_to 'twitterでログイン', '/auth/twitter'
