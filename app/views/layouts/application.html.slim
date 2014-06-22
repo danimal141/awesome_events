@@ -7,5 +7,7 @@ html
   body
     = render partial: 'layouts/header'
     div.container
+      - if flash[:notice]
+        div.alert.alert-success  = flash[:notice]
       = yield
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
