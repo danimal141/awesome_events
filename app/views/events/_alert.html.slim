@@ -1,0 +1,5 @@
+-if event.errors.present?
+  div.alert.alert-danger
+    ul
+      - event.errors.full_messages.each do |msg|
+        li = msg
