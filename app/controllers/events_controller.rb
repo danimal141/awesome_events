@@ -1,5 +1,9 @@
 class EventsController < ApplicationController
-  before_action :authenticate
+  before_action :authenticate, except: :show
+
+  def show
+    @event = Event.find params[:id]
+  end
 
   def new
     @event = current_user.created_events.build
