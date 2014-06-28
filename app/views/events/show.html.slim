@@ -42,7 +42,19 @@ div.row
               div.modal-body
                 = f.text_field :comment, class: 'form-control'
               div.modal-footer
-                button.btn.btn-primary type='button' data-dismiss='modal' キャンセル
+                button.btn.btn-default type='button' data-dismiss='modal' キャンセル
                 = f.button '送信', class: 'btn btn-primary', data: { disable_with: '送信中…' }
     - else
       = link_to '参加する', new_event_ticket_path(@event), class: 'btn btn-primary btn-lg btn-block'
+    hr
+    div.panel.panel-default
+      div.panel-heading 参加者
+      div.panel-body
+        ul.list-unstyled
+        - @tickets.each do |ticket|
+          li
+            = link_to url_for_twitter(ticket.user) do
+              = image_tag ticket.user.image_url, width: 20, height: 20
+              = "@#{ticket.user.nickname}"
+            = ticket.comment
+

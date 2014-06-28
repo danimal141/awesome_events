@@ -8,6 +8,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find params[:id]
+    @tickets = @event.tickets.includes(:user).order(:created_at)
   end
 
   def new
