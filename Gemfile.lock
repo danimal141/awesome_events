@@ -29,6 +29,9 @@ GEM
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
     builder (3.2.2)
+    bullet (4.11.3)
+      activesupport (>= 3.0.0)
+      uniform_notifier (>= 1.6.0)
     byebug (2.7.0)
       columnize (~> 0.3)
       debugger-linecache (~> 1.2)
@@ -147,11 +150,13 @@ GEM
     uglifier (2.5.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    uniform_notifier (1.6.2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  bullet
   coffee-rails (~> 4.0.0)
   jbuilder (~> 2.0)
   jquery-rails
