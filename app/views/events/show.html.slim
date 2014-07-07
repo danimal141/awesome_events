@@ -27,3 +27,36 @@ div.row
     - if @event.created_by? current_user
       = link_to 'イベントを編集する', edit_event_path(@event), class: 'btn btn-info btn-lg btn-block'
       = link_to 'イベントを削除する', event_path(@event), method: :delete, class: 'btn btn-danger btn-lg btn-block', data: { confirm: '本当に削除しますか？' }
+
+    - if @ticket
+      = link_to '参加をキャンセルする', event_ticket_path(@event, @ticket), class: 'btn btn-danger btn-lg btn-block', method: :delete, data: { confirm: '本当に削除しますか？' }
+    - elsif logged_in?
+      button.btn.btn-primary.btn-lg.btn-block data-toggle='modal' data-target='#createTicket' 参加する
+
+      div#createTicket.modal.fade tabindex='-1' role='dialog' aria-labelledby='dialogHeader' aria-hidden='true'
+        div.modal-dialog
+          div.modal-content
+            div.modal-header
+              button.close type='button' data-dismiss='modal' aria-hidden='true' &times;
+              h4#dialogHeader.modal-title 参加コメント
+
+            = form_for(@event.tickets.build, url: event_tickets_path(@event), remote: true) do |f|
+              div.modal-body
+                = f.text_field :comment, class: 'form-control'
+              div.modal-footer
+                button.btn.btn-default type='button' data-dismiss='modal' キャンセル
+                = f.button '送信', class: 'btn btn-primary', data: { disable_with: '送信中…' }
+    - else
+      = link_to '参加する', new_event_ticket_path(@event), class: 'btn btn-primary btn-lg btn-block'
+    hr
+    div.panel.panel-default
+      div.panel-heading 参加者
+      div.panel-body
+        ul.list-unstyled
+        - @tickets.each do |ticket|
+          li
+            = link_to url_for_twitter(ticket.user) do
+              = image_tag ticket.user.image_url, width: 20, height: 20
+              = "@#{ticket.user.nickname}"
+            = ticket.comment
+

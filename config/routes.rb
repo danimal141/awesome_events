@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  resources :events
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -8,6 +6,10 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get '/auth/:provider/callback', controller: :sessions, action: :create
   get '/logout', controller: :sessions, action: :destroy, as: :logout
+
+  resources :events do
+    resources :tickets
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

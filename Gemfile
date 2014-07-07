@@ -39,6 +39,9 @@ gem 'jbuilder', '~> 2.0'
 gem 'omniauth', '~> 1.2.1'
 gem 'omniauth-twitter', '~> 1.0.1'
 
+# To check N+1 problem
+gem 'bullet', group: :development
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
