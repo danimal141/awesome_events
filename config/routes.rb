@@ -7,12 +7,12 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', controller: :sessions, action: :create
   get '/logout', controller: :sessions, action: :destroy, as: :logout
 
-  resource :user do
+  resource :user, only: :destroy do
     get 'retire'
   end
 
   resources :events do
-    resources :tickets
+    resources :tickets, only: [:new, :create, :destroy]
   end
 
   # Example of regular route:
