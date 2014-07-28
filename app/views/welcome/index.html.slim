@@ -1,6 +1,18 @@
 div.page-header
   h1 イベント一覧
 
+= search_form_for @q, url: root_path, class: 'well' do |f|
+  div.form-group
+    = f.label :name_cont, 'イベント名'
+    = f.text_field :name_cont, class: 'form-control'
+  div.form-group
+    = f.label :start_time_gteq, '開催日'
+    - now = Time.zone.now
+    p
+      = f.date_select :start_time_gteq, start_year: now.year, end_year: now.year + 1, prompt: true
+      | ~
+  = f.submit '検索', class: 'btn btn-default'
+
 div.list-group
   - @events.each do |event|
     = link_to event, class: 'list-group-item' do

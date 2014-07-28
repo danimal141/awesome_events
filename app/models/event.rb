@@ -14,6 +14,15 @@ class Event < ActiveRecord::Base
     owner_id == user.id
   end
 
+  class << self
+    def ransackable_attributes auth_object = nil
+      %w(name start_time)
+    end
+    def ransackable_associations auth_object = nil
+      []
+    end
+  end
+
   private
   def start_time_should_be_before_end_time
     return unless start_time && end_time
