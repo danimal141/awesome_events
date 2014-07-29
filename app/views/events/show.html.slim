@@ -2,6 +2,9 @@ div.page-header
   h1 = @event.name
 div.row
   div.col-md-8
+    - if @event.event_image?
+      div.thumbnail
+        = image_tag @event.event_image.url
     div.panel.panel-default
       div.panel-heading 主催者
       div.panel-body

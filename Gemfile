@@ -49,6 +49,10 @@ gem 'kaminari-bootstrap', '~> 3.0.1'
 # To search
 gem 'ransack', '~> 1.2.2'
 
+# To attach image
+gem 'carrierwave', '~> 0.10.0'
+gem 'mini_magick', '~> 3.7.0'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

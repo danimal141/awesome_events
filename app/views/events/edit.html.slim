@@ -12,6 +12,17 @@ div.page-header
     = f.label :place
     = f.text_field :place, class: 'form-control'
   div.form-group
+    - if @event.event_image?
+      div.thumbnail
+        = image_tag @event.event_image.url
+    = f.file_field :event_image
+    = f.hidden_field :event_image_cache
+  - if @event.event_image?
+    div.checkbox
+      label
+        = f.check_box :remove_event_image
+        | 画像を削除する
+  div.form-group
     = f.label :start_time
     div = f.datetime_select :start_time, start_year: now.year, end_year: now.year + 1
   div.form-group
